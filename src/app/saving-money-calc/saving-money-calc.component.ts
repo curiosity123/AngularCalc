@@ -24,8 +24,8 @@ export class SavingMoneyCalcComponent implements OnInit {
 
 
 
-  SetClick(event) {
-  console.log('mozesz isc se spac');
+  myFunction(event) {
+this.CalcService.calculate('');
 
   }
 

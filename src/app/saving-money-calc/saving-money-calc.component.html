@@ -1,36 +1,56 @@
+<div class="container" style="background-color: white;" id="chart_div" (window:resize)="myFunction($event)">
 
 
-<div style="background-color: black;" onresize="CalcService.calculate()" id="chart_div">
-    <google-chart class="chart" #chart [title]=" CalcService.title" [columns]="CalcService.columnNames" [data]="CalcService.graphData"
-        [type]="CalcService.type" [options]="CalcService.options" style="width: auto; height:inherit;" id="CalcService.gchart"></google-chart>
+    <div class="container  m-5">
+        <div class="row">
+            <form class="input-form row">
+                <div class="col-lg-6 col-md-6 col-xl-6">
+                    <mat-form-field appearance="fill" style="width: 350px;">
+                        <mat-label>How fast the price increases year by year in %</mat-label>
+                        <input matInput placeholder="(RdR %)" [(ngModel)]="CalcService.ypYTargetInflation"
+                            [ngModelOptions]="{standalone: true}" [value]="CalcService.ypYTargetInflation"
+                            (input)="CalcService.calculate($event.target.placeholder)">
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xl-36">
+                    <mat-form-field appearance="fill" style="width: 350px;">
+                        <mat-label>How much money you have now</mat-label>
+                        <input matInput placeholder="Ile już posiadasz" [(ngModel)]="CalcService.yourWallet"
+                            [ngModelOptions]="{standalone: true}" value="{{CalcService.yourWallet}}"
+                            (input)="CalcService.calculate($event.target.placeholder)">
+                    </mat-form-field>
+                </div>
+                <div class="col-lg-6 col-md-6 col-xl-6">
+                    <mat-form-field appearance="fill" style="width: 350px;">
+                        <mat-label>Your monthly saved money</mat-label>
+                        <input matInput type="number" placeholder="kwota odkładana co miesiąc"
+                            [(ngModel)]="CalcService.monthlySavedMoney" [ngModelOptions]="{standalone: true}"
+                            value="{{CalcService.monthlySavedMoney}}"
+                            (input)="CalcService.calculate($event.target.placeholder)">
+                    </mat-form-field>
+                </div>
 
-    <form class="input-form" >
-        <mat-form-field appearance="fill" style="width: 350px;">
-            <mat-label>How fast the price increases year by year in %</mat-label>
-            <input matInput  placeholder="(RdR %)" [(ngModel)]="CalcService.ypYTargetInflation" [ngModelOptions]="{standalone: true}"
-            [value]="CalcService.ypYTargetInflation" (input)="CalcService.calculate($event.target.placeholder)">
-        </mat-form-field>
+                <div class="col-lg-6 col-md-6 col-xl-6">
+                    <mat-form-field appearance="fill" style="width: 350px;">
+                        <mat-label>Price of product</mat-label>
+                        <input matInput placeholder="aktualna wartość" [(ngModel)]="CalcService.priceOfTargetNow"
+                            [ngModelOptions]="{standalone: true}" bind-value="CalcService.priceOfTargetNow"
+                            [ngClass]="{error:0>CalcService.priceOfTargetNow}"
+                            (input)="CalcService.calculate($event.target.placeholder)">
+                    </mat-form-field>
+                </div>
+            </form>
+        </div>
 
-        <mat-form-field appearance="fill" style="width: 300px;">
-            <mat-label>How much money you have now</mat-label>
-            <input matInput  placeholder="Ile już posiadasz" [(ngModel)]="CalcService.yourWallet" [ngModelOptions]="{standalone: true}"
-            value="{{CalcService.yourWallet}}" (input)="CalcService.calculate($event.target.placeholder)">
-        </mat-form-field>
+    <div class="row ">
+        <div class="col-12">
+        <google-chart class="chart container" #chart [title]="CalcService.title" [columns]="CalcService.columnNames"
+            [data]="CalcService.graphData" [type]="CalcService.type" [options]="CalcService.options"
+            style="width: auto; height: 60vh;" id="CalcService.gchart"></google-chart>
+        </div>
+    </div>
 
-
-        <mat-form-field appearance="fill" style="width: 250px;">
-            <mat-label>Your monthly saved money</mat-label>
-            <input matInput type="number"  placeholder="kwota odkładana co miesiąc" [(ngModel)]="CalcService.monthlySavedMoney" [ngModelOptions]="{standalone: true}"
-            value="{{CalcService.monthlySavedMoney}}" (input)="CalcService.calculate($event.target.placeholder)">
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" style="width: 200px;">
-            <mat-label>Price of product</mat-label>
-            <input matInput  placeholder="aktualna wartość" [(ngModel)]="CalcService.priceOfTargetNow" [ngModelOptions]="{standalone: true}"
-            bind-value="CalcService.priceOfTargetNow" [ngClass]="{error:0>CalcService.priceOfTargetNow}"
-            (input)="CalcService.calculate($event.target.placeholder)">
-        </mat-form-field>
+    </div>
 
 
-    </form>
 </div>
