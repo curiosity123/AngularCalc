@@ -1,5 +1,7 @@
 <div  id="chart_div" (window:resize)="myFunction($event)" >
-
+<div class="text-center m-5 h2">
+    Calculte when you will be able to buy a product saving specific amount of money
+</div>
 
     <div class="container-12 m-5 p-0 "  >
         <div class="row">
@@ -55,7 +57,7 @@
         <div class="row mt-5" >
             <p>Estimated time when you save all money is about {{CalcService.TotalMonths | number}} months,
                 which is {{CalcService.TotalAges}} years.
-                Product price in that moment will be equal to  {{CalcService.priceOfProperty}}</p>
+                Product price will be equal  {{CalcService.priceOfProperty}}</p>
               <p>Crossing lines on chart show you point when you will be ready to buy the product or service. If the lines are not crossing with each other it means that you will never
                   save enough money because product price is growing to fast.
               </p>
