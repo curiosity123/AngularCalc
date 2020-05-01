@@ -12,11 +12,13 @@ import 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { SavingMoneyCalcService } from './saving-money-calc.service';
 import {MatCardModule} from '@angular/material/card';
+import { BankDepositProfitsComponent } from './bank-deposit-profits/bank-deposit-profits.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SavingMoneyCalcComponent
+    SavingMoneyCalcComponent,
+    BankDepositProfitsComponent
   ],
   imports: [
     BrowserModule,
