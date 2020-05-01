@@ -11,7 +11,7 @@ import { GoogleChartsModule } from 'angular-google-charts';
 import 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { SavingMoneyCalcService } from './saving-money-calc.service';
-
+import {MatCardModule} from '@angular/material/card';
 
 @NgModule({
   declarations: [
@@ -23,6 +23,7 @@ import { SavingMoneyCalcService } from './saving-money-calc.service';
     BrowserAnimationsModule,
     MatTabsModule,
     MatFormFieldModule,
+    MatCardModule,
     MatInputModule,
     GoogleChartsModule,
     FormsModule

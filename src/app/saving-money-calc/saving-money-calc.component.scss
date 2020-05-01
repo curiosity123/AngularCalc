@@ -1,6 +1,14 @@
-
 ::ng-deep.mat-form-field {
-    width: inherit;
+  width: inherit;
+}
 
-    }
+.info {
+  background-color: darkslateblue;
+  color: white;
+}
+
+.summary {
+    background-color: darkslategrey;
+    color: white;
+  }
 

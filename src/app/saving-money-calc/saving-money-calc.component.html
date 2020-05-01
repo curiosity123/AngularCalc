@@ -1,69 +1,79 @@
-<div  id="chart_div" (window:resize)="myFunction($event)" >
-<div class="text-center m-5 h2">
-    Calculte when you will be able to buy a product saving specific amount of money
-</div>
-
-    <div class="container-12 m-5 p-0 "  >
-        <div class="row">
-            <div class="col-lg-3 col-12 mt-2 m-0 p-0" >
-                <form class="input-form  row" >
-
-                    <div class="col-12">
-                        <mat-form-field appearance="fill" >
-                            <mat-label>Price of product or service</mat-label>
-                            <input matInput placeholder="aktualna wartość" type="number" [(ngModel)]="CalcService.priceOfTargetNow"
-                                [ngModelOptions]="{standalone: true}" bind-value="CalcService.priceOfTargetNow"
-                                [ngClass]="{error:0>CalcService.priceOfTargetNow}"
-                                (input)="CalcService.calculate($event.target.placeholder)">
-                        </mat-form-field>
-                    </div>
-
-                    <div class="col-12">
-                        <mat-form-field appearance="fill"  >
-                            <mat-label>How the price increases year by year in %</mat-label>
-                            <input matInput placeholder="(YbY %)" type="number" [(ngModel)]="CalcService.ypYTargetInflation"
-                                [ngModelOptions]="{standalone: true}" [value]="CalcService.ypYTargetInflation"
-                                (input)="CalcService.calculate($event.target.placeholder)">
-                        </mat-form-field>
-                    </div>
-                    <div class="col-12">
-                        <mat-form-field appearance="fill" >
-                            <mat-label>How much money you have now</mat-label>
-                            <input matInput placeholder="Ile już posiadasz" type="number" [(ngModel)]="CalcService.yourWallet"
-                                [ngModelOptions]="{standalone: true}" value="{{CalcService.yourWallet}}"
-                                (input)="CalcService.calculate($event.target.placeholder)">
-                        </mat-form-field>
-                    </div>
-                    <div class="col-12">
-                        <mat-form-field appearance="fill" >
-                            <mat-label>Your monthly saved money</mat-label>
-                            <input matInput type="number" placeholder="kwota odkładana co miesiąc"
-                                [(ngModel)]="CalcService.monthlySavedMoney" [ngModelOptions]="{standalone: true}"
-                                value="{{CalcService.monthlySavedMoney}}"
-                                (input)="CalcService.calculate($event.target.placeholder)">
-                        </mat-form-field>
-                    </div>
-
-
-                </form>
-            </div>
-            <div class="col-lg-1 col-12 mt-4 m-0 p-0" ></div>
-            <div class="col-lg-8 col-12  m-0 p-0" >
-                <google-chart #chart [title]="CalcService.title" [columns]="CalcService.columnNames"
-                    [data]="CalcService.graphData" [type]="CalcService.type" [options]="CalcService.options"
-                    style="width: 100%;  height: auto; min-height: 40vh; " id="CalcService.gchart"></google-chart>
-            </div>
-        </div>
-        <div class="row mt-5" >
-            <p>Estimated time when you save all money is about {{CalcService.TotalMonths | number}} months,
-                which is {{CalcService.TotalAges}} years.
-                Product price will be equal  {{CalcService.priceOfProperty}}</p>
-              <p>Crossing lines on chart show you point when you will be ready to buy the product or service. If the lines are not crossing with each other it means that you will never
-                  save enough money because product price is growing to fast.
-              </p>
+<div id="chart_div" (window:resize)="myFunction($event)" >
+    <mat-card class="m-5" >
+        <div class="text-center h2">
+            Calculte when you will be able to buy a product saving specific amount of money
         </div>
 
-    </div>
+
+        <div class="container-12 m-5 p-0 ">
+            <div class="row">
+                <div class="col-lg-3 col-12 mt-2 m-0 p-0">
+                    <form class="input-form  row mt-4">
+
+                        <div class="col-12">
+                            <mat-form-field appearance="legacy">
+                                <mat-label>Price of product or service</mat-label>
+                                <input matInput placeholder="aktualna wartość" type="number"
+                                    [(ngModel)]="CalcService.priceOfTargetNow" [ngModelOptions]="{standalone: true}"
+                                    bind-value="CalcService.priceOfTargetNow"
+                                    [ngClass]="{error:0>CalcService.priceOfTargetNow}"
+                                    (input)="CalcService.calculate($event.target.placeholder)">
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-12">
+                            <mat-form-field appearance="legacy">
+                                <mat-label>How the price increases year by year in %</mat-label>
+                                <input matInput placeholder="(YbY %)" type="number"
+                                    [(ngModel)]="CalcService.ypYTargetInflation" [ngModelOptions]="{standalone: true}"
+                                    [value]="CalcService.ypYTargetInflation"
+                                    (input)="CalcService.calculate($event.target.placeholder)">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12">
+                            <mat-form-field appearance="legacy">
+                                <mat-label>How much money you have now</mat-label>
+                                <input matInput placeholder="Ile już posiadasz" type="number"
+                                    [(ngModel)]="CalcService.yourWallet" [ngModelOptions]="{standalone: true}"
+                                    value="{{CalcService.yourWallet}}"
+                                    (input)="CalcService.calculate($event.target.placeholder)">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-12">
+                            <mat-form-field appearance="legacy">
+                                <mat-label>Your monthly saved money</mat-label>
+                                <input matInput type="number" placeholder="kwota odkładana co miesiąc"
+                                    [(ngModel)]="CalcService.monthlySavedMoney" [ngModelOptions]="{standalone: true}"
+                                    value="{{CalcService.monthlySavedMoney}}"
+                                    (input)="CalcService.calculate($event.target.placeholder)">
+                            </mat-form-field>
+                        </div>
 
 
+                    </form>
+                </div>
+                <div class="col-lg-1 col-12 mt-4 m-0 p-0"></div>
+                <div class="col-lg-8 col-12  m-0 p-0">
+                    <google-chart #chart [title]="CalcService.title" [columns]="CalcService.columnNames"
+                        [data]="CalcService.graphData" [type]="CalcService.type" [options]="CalcService.options"
+                        style="width: 100%;  height: auto; min-height: 40vh; " id="CalcService.gchart"></google-chart>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <mat-card class="summary mb-4">
+                    <p><strong>Summary</strong></p>
+                    Estimated time when you save all money is about <strong>{{CalcService.TotalMonths | number}} months</strong>,
+                    which is around <strong>{{CalcService.TotalAges}} years</strong>.
+                    Product price will be equal <strong>{{CalcService.priceOfProperty}}</strong></mat-card>
+                <mat-card class="info">
+                    <p><strong>Info</strong></p>
+                    Crossing lines on chart show you point when you will be ready to buy the product or service. If the
+                    lines are not crossing with each other it means that you will never
+                    save enough money because product price is growing to fast.
+                </mat-card>
+            </div>
+
+        </div>
+
+    </mat-card>
 </div>
