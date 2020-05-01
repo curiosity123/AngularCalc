@@ -6,6 +6,10 @@ import { Injectable } from '@angular/core';
 export class SavingMoneyCalcService {
 
 
+
+
+
+
   kalkulatory: string[] = ['walutowy', 'kredytowy'];
 
 
@@ -22,13 +26,30 @@ export class SavingMoneyCalcService {
   type = 'LineChart';
   columnNames = ['Sth', 'Product or service price', 'Your money'];
   options = {
-    pointSize: 4,
+   
     hAxis: {
       title: 'Month',
+
+      textStyle: { color: '#eee' },
+      titleTextStyle: { color: '#eee' },
+      gridlines: { color: '#ccc' }
     },
     vAxis: {
       title: 'Price',
+      textStyle: { color: '#eee' },
+      titleTextStyle: { color: '#eee' },
+      gridlines: { color: '#ccc' }
     },
+    chartArea: {
+      backgroundColor: '#333'
+
+    },
+    backgroundColor: { fill: 'transparent' },
+    titleTextStyle: { color: '#eee' },
+    gridlines: { color: '#ccc' },
+    legend: {
+      textStyle: { color: '#eee' }
+    }
   };
   height = 600;
 
@@ -36,31 +57,41 @@ export class SavingMoneyCalcService {
 
   constructor() {
     this.calculate('first run');
-   }
+  }
 
 
 
 
 
   calculate(target) {
-    console.log('zmienino' , target);
+
     this.graphData = [];
-    let index = 0;
     this.TotalMonths = -1;
-    const months = new Array(100);
-    for (const num of months) {
-      index++;
-      this.graphData.push([index, this.valueOfTargetAfterMonth(index), this.savedMoneyAfter(index)]);
+
+
+    for (var index = 0; index < 1000; index++) {
+
+
       if (this.valueOfTargetAfterMonth(index) > this.savedMoneyAfter(index)) {
         this.TotalMonths = index;
         this.priceOfProperty = this.valueOfTargetAfterMonth(index);
       }
-      if (this.TotalMonths == 100) {
-        this.TotalMonths = 999999999;
+
+      if (index < this.TotalMonths + 5) {
+        this.graphData.push([index, this.valueOfTargetAfterMonth(index), this.savedMoneyAfter(index)]);
       }
+
+      if (this.TotalMonths > 900) {
+        this.TotalMonths = Infinity ;
+        this.TotalAges = Infinity ;
+        this.priceOfProperty = Infinity ;
+        break;
+      }
+
+      this.TotalAges = Number((this.TotalMonths / 12).toFixed(1));
+      this.priceOfProperty = Math.round(this.priceOfProperty);
     }
-    this.TotalAges = Math.floor(this.TotalMonths / 12);
-    this.priceOfProperty = Math.floor(this.priceOfProperty);
+
   }
 
   valueOfTargetAfterMonth(monthCount: number): number {
