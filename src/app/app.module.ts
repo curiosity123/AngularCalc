@@ -12,6 +12,10 @@ import 'rxjs';
 import { FormsModule } from '@angular/forms';
 import { SavingMoneyCalcService } from './saving-money-calc.service';
 import {MatCardModule} from '@angular/material/card';
+import {MatListModule} from '@angular/material/list';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+
 import { BankDepositProfitsComponent } from './bank-deposit-profits/bank-deposit-profits.component';
 
 @NgModule({
@@ -27,6 +31,9 @@ import { BankDepositProfitsComponent } from './bank-deposit-profits/bank-deposit
     MatFormFieldModule,
     MatCardModule,
     MatInputModule,
+    MatListModule,
+    MatButtonModule,
+    MatIconModule,
     GoogleChartsModule,
     FormsModule
   ],

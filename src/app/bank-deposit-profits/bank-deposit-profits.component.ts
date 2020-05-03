@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BankDepositProfitsService } from '../bank-deposit-profits.service';
 
 @Component({
   selector: 'app-bank-deposit-profits',
@@ -7,12 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BankDepositProfitsComponent implements OnInit {
 
-  constructor() { }
+  Service: BankDepositProfitsService;
+
+  constructor(service: BankDepositProfitsService) {
+    this.Service = service;
+  }
 
   ngOnInit(): void {
+    this.Service.calculate(null);
   }
   myFunction(event) {
-   
-    
-      }
+
+
+  }
 }
