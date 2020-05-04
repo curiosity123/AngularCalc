@@ -1,10 +1,10 @@
 <div >
-  <mat-tab-group mat-align-tabs="center" >
+  <mat-tab-group mat-align-tabs="center" (selectedTabChange)="refreshChildren($event)" >
     <mat-tab label="Saving money">
-      <app-saving-money-calc></app-saving-money-calc>
+      <app-saving-money-calc [events]="eventsSubject.asObservable()" #savingMoneyCalc></app-saving-money-calc>
     </mat-tab>
     <mat-tab label="Bank deposit profits">
-      <app-bank-deposit-profits></app-bank-deposit-profits>
+      <app-bank-deposit-profits [events]="eventsSubject.asObservable()" #depositCalc ></app-bank-deposit-profits>
     </mat-tab>
   </mat-tab-group>
 </div>

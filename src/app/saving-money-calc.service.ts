@@ -6,13 +6,6 @@ import { Injectable } from '@angular/core';
 export class SavingMoneyCalcService {
 
 
-
-
-
-
-  kalkulatory: string[] = ['walutowy', 'kredytowy'];
-
-
   ypYTargetInflation = 6;
   monthlySavedMoney = 2000;
   priceOfTargetNow = 100000;
@@ -44,6 +37,7 @@ export class SavingMoneyCalcService {
       backgroundColor: '#333'
 
     },
+    colors: ['#de425b','#004c6d'],
     backgroundColor: { fill: 'transparent' },
     titleTextStyle: { color: '#eee' },
     gridlines: { color: '#ccc' },
@@ -84,7 +78,7 @@ export class SavingMoneyCalcService {
       if (this.TotalMonths > 900) {
         this.TotalMonths = Infinity ;
         this.TotalAges = Infinity ;
-        this.priceOfProperty = Infinity ;
+        this.priceOfProperty = -1;
         break;
       }
 
