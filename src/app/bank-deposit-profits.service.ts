@@ -59,6 +59,7 @@ export class BankDepositProfitsService {
     this.MonthlyEarn = Number(this.MonthlyEarn.toFixed(1));
 
     this.SummaryLoss = this.MonthlyLoss - this.MonthlyEarn;
+    this.SummaryLoss = Number(this.SummaryLoss.toFixed(1));
     this.Data.push(['loss', this.SummaryLoss]);
     temp.forEach(x=> this.Data.push(x));
 
