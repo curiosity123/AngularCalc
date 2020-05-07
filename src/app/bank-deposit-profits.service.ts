@@ -11,7 +11,10 @@ export class BankDepositProfitsService {
 
 
   DepositList: { money: number, interest: number }[] =
-    [
+    [{ money: 30000, interest: 6 },
+    { money: 25000, interest: 4    }
+    ,
+    { money: 15000, interest: 2    }
     ];
 
   TempMoney = 0;
@@ -29,15 +32,15 @@ export class BankDepositProfitsService {
 
   Height = 500;
   options = {
-   
-    colors: ['#de425b','#004c6d',
-    '#2c6480',
-    '#4c7d92',
-    '#6b96a6',
-    '#8bb0ba',
-    '#accad0',
-    '#cee4e6',
-    '#f1ffff']
+
+    colors: ['#de425b', '#004c6d',
+      '#2c6480',
+      '#4c7d92',
+      '#6b96a6',
+      '#8bb0ba',
+      '#accad0',
+      '#cee4e6',
+      '#f1ffff']
   };
 
 
@@ -53,7 +56,7 @@ export class BankDepositProfitsService {
     let temp = [];
     for (let i = 0; i < this.DepositList.length; i++) {
       const data = (this.DepositList[i].money * ((this.DepositList[i].interest / 100) * 0.81)) / 12;
-      temp.push([this.DepositList[i].money.toString()+'-' +this.DepositList[i].interest.toString()+ '%', data]);
+      temp.push([this.DepositList[i].money.toString() + '-' + this.DepositList[i].interest.toString() + '%', data]);
       this.MonthlyEarn = this.MonthlyEarn + (this.DepositList[i].money * ((this.DepositList[i].interest / 100) * 0.81)) / 12;
     }
     this.MonthlyEarn = Number(this.MonthlyEarn.toFixed(1));
@@ -61,7 +64,7 @@ export class BankDepositProfitsService {
     this.SummaryLoss = this.MonthlyLoss - this.MonthlyEarn;
     this.SummaryLoss = Number(this.SummaryLoss.toFixed(1));
     this.Data.push(['loss', this.SummaryLoss]);
-    temp.forEach(x=> this.Data.push(x));
+    temp.forEach(x => this.Data.push(x));
 
   }
 
