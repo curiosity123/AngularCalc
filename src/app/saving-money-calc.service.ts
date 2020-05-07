@@ -15,7 +15,7 @@ export class SavingMoneyCalcService {
   priceOfProperty = 0;
 
   graphData = [];
-  title = 'When you save enough money for your product or service';
+  title = 'Saving money chart';
   type = 'LineChart';
   columnNames = ['Sth', 'Product or service price', 'Your money'];
   options = {
@@ -23,27 +23,16 @@ export class SavingMoneyCalcService {
     hAxis: {
       title: 'Month',
 
-      textStyle: { color: '#eee' },
-      titleTextStyle: { color: '#eee' },
-      gridlines: { color: '#ccc' }
+    
     },
     vAxis: {
       title: 'Price',
-      textStyle: { color: '#eee' },
-      titleTextStyle: { color: '#eee' },
-      gridlines: { color: '#ccc' }
+    
     },
     chartArea: {
-      backgroundColor: '#333'
-
-    },
+        },
     colors: ['#de425b','#004c6d'],
-    backgroundColor: { fill: 'transparent' },
-    titleTextStyle: { color: '#eee' },
-    gridlines: { color: '#ccc' },
-    legend: {
-      textStyle: { color: '#eee' }
-    }
+
   };
   height = 600;
 

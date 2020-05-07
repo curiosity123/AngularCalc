@@ -29,12 +29,7 @@ export class BankDepositProfitsService {
 
   Height = 500;
   options = {
-    backgroundColor: { fill: 'transparent' },
-    titleTextStyle: { color: '#eee' },
-    gridlines: { color: '#ccc' },
-    legend: {
-      textStyle: { color: '#eee' }
-    },
+   
     colors: ['#de425b','#004c6d',
     '#2c6480',
     '#4c7d92',

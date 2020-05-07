@@ -1,6 +1,6 @@
 <div id="chart_div" (window:resize)="myFunction($event)">
     <mat-card class="m-3 mt-5">
-        <div class="text-center h5 whitesmoke">
+        <div class="text-center h5 ">
             Let's find out when you save enough money...
         </div>
 
@@ -13,7 +13,7 @@
                         <div class="col-12">
                             <mat-form-field appearance="legacy">
                                 <mat-label>Product price</mat-label>
-                                <input matInput placeholder="aktualna wartość" (click)="$event.target.select()"
+                                <input matInput placeholder="Product price" (click)="$event.target.select()"
                                     type="number" [(ngModel)]="CalcService.priceOfTargetNow"
                                     [ngModelOptions]="{standalone: true}" bind-value="CalcService.priceOfTargetNow"
                                     [ngClass]="{error:0>CalcService.priceOfTargetNow}"
@@ -24,7 +24,7 @@
                         <div class="col-12">
                             <mat-form-field appearance="legacy">
                                 <mat-label>Price increase (YbY in %)</mat-label>
-                                <input matInput placeholder="(YbY %)" (click)="$event.target.select()" type="number"
+                                <input matInput placeholder="Price increase(YbY %)" (click)="$event.target.select()" type="number"
                                     [(ngModel)]="CalcService.ypYTargetInflation" [ngModelOptions]="{standalone: true}"
                                     [value]="CalcService.ypYTargetInflation"
                                     (input)="CalcService.calculate($event.target.placeholder)">
@@ -33,7 +33,7 @@
                         <div class="col-12">
                             <mat-form-field appearance="legacy">
                                 <mat-label>Money you have now</mat-label>
-                                <input matInput placeholder="Ile już posiadasz" (click)="$event.target.select()"
+                                <input matInput placeholder="Money you have now" (click)="$event.target.select()"
                                     type="number" [(ngModel)]="CalcService.yourWallet"
                                     [ngModelOptions]="{standalone: true}" value="{{CalcService.yourWallet}}"
                                     (input)="CalcService.calculate($event.target.placeholder)">
@@ -42,7 +42,7 @@
                         <div class="col-12">
                             <mat-form-field appearance="legacy">
                                 <mat-label>Monthly saved money</mat-label>
-                                <input matInput type="number" placeholder="kwota odkładana co miesiąc"
+                                <input matInput type="number" placeholder="Monthly saved money"
                                     [(ngModel)]="CalcService.monthlySavedMoney" (click)="$event.target.select()"
                                     [ngModelOptions]="{standalone: true}" value="{{CalcService.monthlySavedMoney}}"
                                     (input)="CalcService.calculate($event.target.placeholder)">
@@ -63,22 +63,24 @@
 
 
 
-                <div>
+                <mat-card  class="info mb-4">
                     <strong>Short summary:</strong><br/>
            
                 <mat-chip-list class="m-3">
-                    <mat-chip color="primary" selected>
-                        <mat-icon>watch_later</mat-icon>You need at least {{CalcService.TotalMonths | number}} months which is around
+                    <mat-icon>timer</mat-icon>
+                    <mat-chip color="primary" selected >
+                       {{CalcService.TotalMonths | number}} months which is around
                         {{CalcService.TotalAges}} years
                     </mat-chip>
                 </mat-chip-list>
 
                 <mat-chip-list class="m-3">
-                    <mat-chip color="primary" selected>
-                        <mat-icon>monetization_on</mat-icon>Product price increases to: {{CalcService.priceOfProperty}}
+                    <mat-icon>attach_money</mat-icon>
+                    <mat-chip color="primary" selected >
+                       Product price increases to: {{CalcService.priceOfProperty}}
                     </mat-chip>
                 </mat-chip-list>
-            </div>
+                </mat-card>
                 <mat-card class="info">
                     <p><strong>Info</strong></p>
                     Crossing lines on chart show you point when you will be ready to buy the product or service. If the
