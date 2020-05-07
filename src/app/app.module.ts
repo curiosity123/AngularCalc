@@ -15,6 +15,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
+import {MatChipsModule} from '@angular/material/chips';
 
 import { BankDepositProfitsComponent } from './bank-deposit-profits/bank-deposit-profits.component';
 
@@ -34,6 +35,7 @@ import { BankDepositProfitsComponent } from './bank-deposit-profits/bank-deposit
     MatListModule,
     MatButtonModule,
     MatIconModule,
+    MatChipsModule,
     GoogleChartsModule,
     FormsModule
   ],
